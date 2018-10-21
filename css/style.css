@@ -242,7 +242,8 @@ a:hover, a:active {
     height: 160px;
     float: left;
     font-weight: light;
-    background-image: url('../img/blackboard-1.jpg');
+    background: url('../img/blackboard-1.jpg') no-repeat center;
+    background-size: 100% 100%;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
