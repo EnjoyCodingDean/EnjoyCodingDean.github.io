@@ -258,6 +258,7 @@ a:hover, a:active {
 }
 
 .middle-sidebar h4 {
+    padding-right: 50px; 
     text-align: right;
 }
 
@@ -283,7 +284,8 @@ a:hover, a:active {
     padding: 2% 3%
 }
 
-.bottom-sidebar ul {
+.bottom-sidebar h3, ul {
+    padding-left: 20px; 
     font-weight: bold;
 }
 
