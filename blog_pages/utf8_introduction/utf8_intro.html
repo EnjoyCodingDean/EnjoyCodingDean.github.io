@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cmm-Hans">
+
+<head>
+    <title>浅谈UTF-8编码</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+</head>
+
+<body class="body">
+
+    <header class="mainHeader">
+
+        <img src="img/logo.png" alt="this is the logo image">
+
+        <nav>
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li class="active"><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <div class="mainContent">
+        <article class="content">
+            <header>
+                <h2>浅谈UTF-8编码</h2>
+            </header>
+
+            <footer>
+                <p class="post-info">This is written by Dean 2017.06.19</p>
+            </footer>
+
+            <p>UTF-8是一个变长度的编码方式，它使用一个到四个8位的字节编码一个Unicode码点，编码的第一个字节的high-order bits预示着编码有几个字节，如下图所示：
+                <figure>
+                <img src="./img/utf-8-encoding.PNG" alt="UTF-8编码示意图">
+                <figcaption>Figure 1.UTF-8编码模型</figcaption>
+            </figure>
+            总结如下：
+                <ul>
+                    <li>首字节的首位为0时，表示该编码只有一个字节</li>
+                    <li>首字节的high-order bits为110时，表示该编码有两个字节，其余字节的high-order bits为10</li>
+                    <li>首字节的high-order bits为1110时，表示该编码有三个字节，其余字节的high-order bits为10</li>
+                    <li>首字节的high-order bits为11110时，表示该编码有四个字节，其余字节的high-order bits为10</li>
+                </ul>
+
+                举个例子，中文字符串“世界”的Unicode码点为\u4e16\u754c, 十进制表示为19990,30028，值在2048-65535之间，故编码各有三个字节，如图所示其
+                内存字节为：e4 b8 96 e7 95 8c。
+                <figure>
+                <img src="./img/世界UTF-8-storage-model.PNG" alt="世界UTF-8内存模型">
+                <figcaption>Figure 2."世界"字符串内存模型</figcaption>
+            </figure>
+            光说不练假把式，下面就用go语言验证一下，废话不多说，代码如下（file name main.go）：
+            <pre>
+                package main
+                
+                import "fmt"
+
+                func main() {
+                    s := "世界"
+                    r := []rune(s)
+                    // Print every rune in the string s of its hexidecimal and decimal representation
+                    fmt.Printf("%x\t%d\n", r, r)
+                    // Print the string s
+                    fmt.Println(string(r))
+                    // Print ervery bytes of the string s in hexidecimal separated by space
+	                fmt.Printf("% x\n", s)
+                }
+            </pre>
+            在command line运行：go run main.go,结果如下：
+            <figure>
+                <img src="./img/results.PNG" alt="运行结果">
+                <figcaption>Figure 3.运行结果</figcaption>
+            </figure>
+            </p>
+        </article>
+    </div>
+
+    <footer class="mainFooter">
+        <p>Copyright &copy: <a href="EnjoyCodingDean.github.io" title="Dean's blog">&nbsp;&nbsp;Dean's Blog</a></p>
+    </footer>
+
+</body>
+
+</html>

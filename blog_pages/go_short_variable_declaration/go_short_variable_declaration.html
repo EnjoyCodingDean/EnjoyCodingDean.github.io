@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cmm-Hans">
+
+<head>
+    <title>Go短变量声明</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+</head>
+
+<body class="body">
+
+    <header class="mainHeader">
+
+        <img src="img/logo.png" alt="this is the logo image">
+
+        <nav>
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li class="active"><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <div class="mainContent">
+        <article class="content">
+            <header>
+                <h2>浅谈go短变量声明</h2>
+            </header>
+
+            <footer>
+                <p class="post-info">This is written by Dean 2017.06.13</p>
+            </footer>
+
+            <p>Go的短变量声明（short variable declaration）用于变量的声明和初始化，一般用于本地代码块中（local code block）中。语法如下：<br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>variable := value/expression/function</b>
+
+                <br>
+                变量的类型由对应的值(value)/表达式(expression)/函数(function)推断而来。举例如下：
+                <pre>
+                    package main
+                
+                    import "fmt"
+                
+                    func main() {
+                        // Short varible declarations
+                        a := 5          // type int, value 5
+                        b := 2.3 + 5.6  // type float64, value 7.9
+                        c := getbool()  // type bool, value true
+                        
+                        // Print all the values of the varibales 
+                        fmt.println(a, b, c)
+                    }
+                
+                    // Func to return true
+                    func getbool() bool {
+                        return true
+                    }
+                    </pre>
+                <br>
+                在命令行运行命令：go run main.go(文件名)， 结果如下：<br><br>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 7.9 true&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </p>
+
+        </article>
+    </div>
+
+    <footer class="mainFooter">
+        <p>Copyright &copy: <a href="EnjoyCodingDean.github.io" title="Dean's blog">&nbsp;&nbsp;Dean's Blog</a></p>
+    </footer>
+
+</body>
+
+</html>

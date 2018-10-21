@@ -1,37 +1,360 @@
+/*
+    Theme Name: My blog HTML5/CSS3 Layout
+    Date: May 2017
+    Author: Dean Zhang
+    Author URL: EnjoyCodingDean.github.io
+*/
+
+*{
+
+    padding: 0%;
+
+    margin: 0%;
+
+}
+
 body {
-    background: url('../img/background.png') no-repeat;
-    background-size: cover;
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
+    background-image: url("../img/bg-old-paper-2.jpg"); 
+    background-color: #d6ae7e;
+    color: #000305;
+    font-size: 87.5%; /* Base font size is 14px */
+    font-family: Arial,'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+    line-height: 1.5;
+    text-align: left;
 }
 
-ul {
-    margin: 0px;
-    padding: 0px;
-    list-style: none;
-    text-align: center;
-    display: block;
-}
-
-ul li {
-    float: right;
-    width: 120px;
-    height: 40px;
-    background: black;
-    opacity: .8;
-    line-height: 40px;
-    text-align: center;
-    font-size: 20px;
-}
-
-ul li a {
+a {
     text-decoration: none;
+}
+
+a:link {
+    color: #CF5C3F;
+}
+
+a:visited {
+    color: purple;
+}
+
+a[title^="Dean"] {
     color: white;
+}
+
+a:hover, a:active {
+    background-color: #CF5C3F;
+    color: #fff;
+}
+
+.body {
+    margin: 0 auto;
+    width: 80%;
+    clear: both;
+}
+
+.mainHeader img {
+    width: 35%;
+    height: auto;
+    margin: 2% 0 .9% 0;
+}
+
+.mainHeader nav {
+    background-color: #666;
+    height: 40px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 0% 1%;
+}
+
+.mainHeader nav ul {
+    list-style: none;
+    margin: 0 auto;
+}
+
+.mainHeader nav ul li {
+    display: inline;
+}
+
+.mainHeader nav a:link, .mainHeader nav a:visited {
+    color: #FFF;
+    display: inline-block;
+    padding: 10px 25px;
+    margin-right: 2px;
+    height: 20px;
+}
+
+.mainHeader nav a:hover, .mainHeader nav a:active, .mainHeader nav .active a:link, 
+.mainHeader nav .active a:visited {
+    background-color: #CF5C3F;
+    text-shadow: none;
+}
+
+.mainHeader nav ul li a {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.mainContent {
+    line-height: 25px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.content {
+    width: 70%;
+    float: left;
+}
+
+.topContent {
+    height: 300px;
+    background-color: #FFF;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 3% 5%;
+    margin-top: 2%;
+}
+
+.bottomContent {
+    height: 300px;
+    background-color: #FFF;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 3% 5%;
+    margin-top: 2%;
+}
+
+.post-info {
+    font-style: italic;
+    color: #999;
+    font-size: 85%;
+}
+
+.top-sidebar {
+   width: 27%;
+   height: 240px;
+   float: left;
+   background-color: #fff;
+   box-sizing: border-box;
+   border-radius: 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+   margin: 2% 0 2% 3%;
+   padding: .5%;
+}
+
+.calendar{
+    padding: 0%;
+}
+
+.title{
+    height: 50px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    position: relative;
+    text-align: center;
+}
+
+#calendar-title{
+    font-size: 15px;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#calendar-year{
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+#pre{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: url(../img/pre.png) 50% 50% no-repeat;
+
+    /*没规定大小时，图片显示 0X0*/
+    width: 60px;
+    height: 70px;
+}
+
+#next{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: url(../img/next.png) no-repeat 50% 50%;
+    width: 60px;
+    height: 70px;
+}  
+
+.calendar-body {
+    padding: 0%;
+
+    margin: 0%;
+}
+
+.body-list ul{
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    /* width: 100%; */
+    widows: 100%;
+    box-sizing: border-box;
+}  
+
+.body-list ul li{
+    list-style: none;
+
+    /* 100/7 = 14.28%*/
     display: block;
+    width: 14.28%;
+    float: left;
+
+    /*规定行高，垂直居中*/
+    height: 25px;
+    line-height: 25px;
+    box-sizing: border-box;
+    text-align: center;
 }
 
-ul li a:hover {
-    background-color: green;
+.green{
+    color:#6ac13c;
+}
+
+.lightgrey{ /*浅灰色显示过去的日期*/
+    color:#a8a8a8;
+}   
+
+.darkgrey{ /*深灰色显示将来的日期*/
+    color:#565656;
+}
+
+/*日期当天用绿色背景绿色文字加以显示*/
+.greenbox{
+    border: 1px solid #6ac13c;
+    background: #e9f8df;
+}
+
+.middle-sidebar {
+    color: white;
+    width: 21%;
+    height: 160px;
+    float: left;
+    font-weight: light;
+    background-image: url('../img/blackboard-1.jpg');
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin-bottom: 2%;
+    margin-left: 3%;
+    padding: 2% 3%
+}
+
+.middle-sidebar h3 {
+    font-size: 1.2em;
+    text-align: center;
+    font-weight: normal;
+}
+
+.middle-sidebar h4 {
+    text-align: right;
 }
 
 
+.middle-sidebar p {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+ .bottom-sidebar {
+    color: white;
+    width: 21%;
+    height: 160px;
+    float: left;
+    background: url('../img/blackboard-5.jpg') no-repeat center #fff;
+    background-size: 100% 100%;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin-bottom: 2%;
+    margin-left: 3%;
+    padding: 2% 3%
+}
+
+.bottom-sidebar ul {
+    font-weight: bold;
+}
+
+.mainFooter {
+    width: 100%;
+    float: left;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-color: #666;
+    margin: 2% 0;
+}
+
+.mainFooter p {
+    width: 92%;
+    margin: 10px auto;
+}
+
+@media only screen and (min-width: 150px) and (max-width: 600px) {
+    .body {
+        width: 90%;
+        font-size: 95%;
+    }
+
+    .mainHeader img {
+        width: 100%;
+    }
+
+    .mainHeader nav {
+        height: 160px;
+    }
+    
+    .mainHeader nav ul {
+        padding-left: 0;
+    }
+
+    
+    .mainHeader nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .mainHeader nav a:link, .mainHeader nav a:visited {
+        padding: 10px 25px;
+        height: 20px;
+        display: block;
+    }
+    
+    .content {
+        width: 100%;
+        float: left;
+        margin-top: 2%;
+    }
+    
+    .post-info {
+        display: none;
+    }
+    .topContent {
+        margin-top: 1%;
+        margin-bottom: 3%;
+    }
+    
+    .bottomContent {
+        margin-top: 4%;
+        margin-bottom: 2%;
+    }
+    
+    .top-sidebar, .middle-sidebar, .bottom-sidebar {
+        width: 94%;
+        margin: 2% 0 2% 0%;
+        padding: 2% 3%
+     }
+     
+}

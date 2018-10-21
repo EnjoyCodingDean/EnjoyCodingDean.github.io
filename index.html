@@ -1,20 +1,294 @@
 <!DOCTYPE html>
-<html>
-   <head>
-      <meta charset="utf-8">
-      <link rel="stylesheet" type="text/css"  href="css/style.css">
-      <title>Dean's Blog</title>
-   </head>
-   <body>
-      <ul>
-          <li><a>News</a></li>
-          <li><a>Contact</a> </li>
-          <li><a href="blog.html">Blog</a></li>
-         <li><a>Home</a></li>
-      </ul>
+<html lang="zh-cmn-Hans">
 
-      <br/><br/><br/>
-      <br/><br/><br/>
+<head>
+    <title>Dean's Blog</title>
+    <meta charset="utf-8">
 
-   </body>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+</head>
+
+<body class="body">
+
+    <header class="mainHeader">
+
+        <img src="img/logo.png" alt="this is the logo image">
+
+        <nav>
+            <ul>
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <div class="mainContent">
+        <div class="content">
+            <article class="topContent">
+                <header>
+                    <h2><a href="blog_pages/go_short_variable_declaration/go_short_variable_declaration.html" title="short variable declaration">Go短变量声明</a></h2>
+                </header>
+
+                <footer>
+                    <p class="post-info">This is written by Dean 2017.06.13</p>
+                </footer>
+
+                <p>Go的短变量声明（short variable declaration）用于变量的声明和初始化，一般用于本地代码块中（local code block）中。语法如下：<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>variable := value/expression/function</b>
+     
+                     <br>
+                     变量的类型由对应的值(value)/表达式(expression)/函数(function)推断而来。。。。。。
+                </p>
+        
+            </article>
+
+            <article class="bottomContent">
+                <header>
+                    <h2><a href="./blog_pages/utf8_introduction/utf8_intro.html" title="浅谈UTF-8编码">浅谈UTF-8编码</a></h2>
+                </header>
+
+                <footer>
+                    <p class="post-info">This is written by Dean 2017.06.19</p>
+                </footer>
+
+                <p>UTF-8是一个变长度的编码方式，它使用一个到四个8位的字节编码一个Unicode码点，编码的第一个字节的high-order bits预示着编码有几个字节，如下图。。。。。。
+
+            </article>
+
+        </div>
+    </div>
+
+    <aside class="top-sidebar">
+        <div class="calendar">
+
+            <div class="title">
+                <h1 class="green" id="calendar-title">Month</h1>
+                <h2 class="green" id="calendar-year">Year</h2>
+                <a href="" id="pre"></a>
+                <a href="" id="next"></a>
+            </div>
+
+            <div class="calendar-body">
+                <div class="lightgrey body-list">
+                    <ul>
+                        <li>SUN</li>
+                        <li>MON</li>
+                        <li>TUE</li>
+                        <li>WED</li>
+                        <li>THU</li>
+                        <li>FRI</li>
+                        <li>SAT</li>
+                    </ul>
+                </div>
+                <div class="darkgrey body-list">
+                    <ul id="days">
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </aside>
+
+    <aside class="middle-sidebar">
+        <article>
+            <br><br>
+            <h3>辉哥的博客</h3>
+            <h4><i>---Dean's Blog&nbsp;&nbsp;&nbsp;</i></h4>
+            <p>大道至简</p>
+        </article>
+    </aside>
+
+    <aside class="bottom-sidebar">
+        <article>
+            <h3>About Me</h3>
+            <ul>
+                <li>web后端开发（golang)</li>
+                <li>游戏服务端开发（golang)</li>
+                <li>使用语言：HTML5, css3, javascript, C++, java, golang</li>
+            </ul>
+        </article>
+    </aside>
+
+    <footer class="mainFooter">
+        <p>Copyright &copy: 2017~2018 <a href="EnjoyCodingDean.github.io" title="Dean's blog">&nbsp;&nbsp;Dean's Blog</a></p>
+    </footer>
+
+    <script type="text/javascript">
+
+        var month_olypic = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];//闰年每个月份的天数
+
+        var month_normal = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        var month_name = ["January", "Febrary", "March", "April", "May", "June", "July", "Auguest", "September", "October", "November", "December"];
+
+        //获取以上各个部分的id
+
+        var holder = document.getElementById("days");
+
+        var prev = document.getElementById("prev");
+
+        var next = document.getElementById("next");
+
+        var ctitle = document.getElementById("calendar-title");
+
+        var cyear = document.getElementById("calendar-year");
+
+        //获取当天的年月日
+
+        var my_date = new Date();
+
+        var my_year = my_date.getFullYear();//获取年份
+
+        var my_month = my_date.getMonth(); //获取月份，一月份的下标为0
+
+        var my_day = my_date.getDate();//获取当前日期
+
+
+
+        //根据年月获取当月第一天是周几
+
+        function dayStart(month, year) {
+
+            var tmpDate = new Date(year, month, 1);
+
+            return (tmpDate.getDay());
+
+        }
+
+        //根据年份判断某月有多少天(11,2018),表示2018年12月
+
+        function daysMonth(month, year) {
+
+            var tmp1 = year % 4;
+
+            var tmp2 = year % 100;
+
+            var tmp3 = year % 400;
+
+
+
+            if ((tmp1 == 0 && tmp2 != 0) || (tmp3 == 0)) {
+
+                return (month_olypic[month]);//闰年
+
+            } else {
+
+                return (month_normal[month]);//非闰年
+
+            }
+
+        }
+
+        //js实现str插入li+class,不要忘了用innerhtml进行插入
+
+        function refreshDate() {
+
+            var str = "";
+
+            //计算当月的天数和每月第一天都是周几，day_month和day_year都从上面获得
+
+            var totalDay = daysMonth(my_month, my_year);
+
+            var firstDay = dayStart(my_month, my_year);
+
+            //添加每个月的空白部分
+
+            for (var i = 0; i < firstDay; i++) {
+
+                str += "<li>" + "</li>";
+
+            }
+
+
+
+            //从一号开始添加知道totalDay，并为pre，next和当天添加样式
+
+            var myclass;
+
+            for (var i = 1; i <= totalDay; i++) {
+
+                //三种情况年份小，年分相等月份小，年月相等，天数小
+
+                //点击pre和next之后，my_month和my_year会发生变化，将其与现在的直接获取的再进行比较
+
+                //i与my_day进行比较,pre和next变化时，my_day是不变的
+
+                console.log(my_year + " " + my_month + " " + my_day);
+
+                console.log(my_date.getFullYear() + " " + my_date.getMonth() + " " + my_date.getDay());
+
+                if ((my_year < my_date.getFullYear()) || (my_year == my_date.getFullYear() && my_month < my_date.getMonth()) || (my_year == my_date.getFullYear() && my_month == my_date.getMonth() && i < my_day)) {
+
+                    myclass = " class='lightgrey'";
+
+                } else if (my_year == my_date.getFullYear() && my_month == my_date.getMonth() && i == my_day) {
+
+                    myclass = "class = 'green greenbox'";
+
+                } else {
+
+                    myclass = "class = 'darkgrey'";
+
+                }
+
+                str += "<li " + myclass + ">" + i + "</li>";
+
+            }
+
+            holder.innerHTML = str;
+
+            ctitle.innerHTML = month_name[my_month];
+
+            cyear.innerHTML = my_year;
+
+        }
+
+        //调用refreshDate()函数，日历才会出现
+
+        refreshDate();
+
+        //实现onclick向前或向后移动
+
+        pre.onclick = function (e) {
+
+            e.preventDefault();
+
+            my_month--;
+
+            if (my_month < 0) {
+
+                my_year--;
+
+                my_month = 11; //即12月份
+
+            }
+
+            refreshDate();
+
+        }
+
+        next.onclick = function (e) {
+
+            e.preventDefault();
+
+            my_month++;
+
+            if (my_month > 11) {
+
+                my_month = 0;
+
+                my_year++;
+
+            }
+
+            refreshDate();
+
+        }
+
+    </script>
+</body>
+
 </html>
